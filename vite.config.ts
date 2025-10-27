@@ -101,7 +101,7 @@ const clientsApiPlugin = {
 
 export default defineConfig({
   plugins: [react(), clientsApiPlugin],
-  base: "/website/",
+  base: "./",
   css: {
     postcss: "./postcss.config.js",
   },
