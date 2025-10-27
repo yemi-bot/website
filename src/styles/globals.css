@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f8f9fa;
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-soft: rgba(217, 236, 244, 0.75);
+  --surface-strong: #ffffff;
+  --text: #15313c;
+  --muted: #4f616a;
+  --accent: #8bcff5;
+  --accent-2: #0e4468;
+  --accent-warm: #a69c64;
+  --accent-soft: rgba(139, 207, 245, 0.18);
+  --success-bg: #e6f5f0;
+  --success-pill: #12a86a;
+  --field-bg: rgba(241, 248, 252, 0.92);
+  --field-stroke: rgba(21, 49, 60, 0.14);
+  --button: #0e4468;
+  --button-hover: #0b3856;
+}
+
+* {
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: radial-gradient(120% 110% at 10% -10%, rgba(14, 68, 104, 0.18), transparent 60%),
+    radial-gradient(160% 120% at 90% 10%, rgba(139, 207, 245, 0.16), transparent 70%),
+    radial-gradient(140% 120% at 50% 120%, rgba(166, 156, 100, 0.12), transparent 75%);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background-color: rgba(44, 179, 243, 0.3);
+  color: var(--text);
+}
+
+@layer base {
+  input,
+  select,
+  textarea {
+    background-color: var(--field-bg);
+    color: var(--text);
+    border-color: var(--field-stroke);
+  }
+}
