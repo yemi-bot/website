@@ -8,7 +8,7 @@ type SiteLayoutProps = {
   children: ReactNode;
 };
 
-const BRAND_NAME = "Top Notch Acquisition";
+const BRAND_NAME = "AI Automate Solutions";
 
 function getNavLabel(title: string, path: RoutePath) {
   if (path === "/") {
@@ -116,7 +116,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               onClick={handleContactClick}
               className="hidden rounded-full bg-accent2 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent lg:inline-flex"
             >
-              Schedule Session
+              Book Assessment
             </button>
             <button
               type="button"
@@ -169,7 +169,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                 onClick={handleContactClick}
                 className="rounded-2xl border border-accent2/30 bg-accentSoft px-4 py-3 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
               >
-                Schedule Session
+                Book Assessment
               </button>
             </nav>
           </div>
@@ -189,11 +189,11 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                 Schedule your 30-minute strategy session
               </h2>
               <p className="text-base text-textMuted">
-                No obligation. Zoom or phone. Your information stays private and we only onboard five clients per quarter to protect quality.
+                No obligation. Zoom or phone. Your information stays private and we only onboard a limited number of new clients each quarter to protect delivery quality.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="mailto:hello@topnotchacq.com"
+                  href="mailto:hello@aiautomatesolution.com"
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent2 to-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
                 >
                   Email Us
@@ -213,10 +213,10 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                   </svg>
                 </a>
                 <a
-                  href="tel:+12025550123"
+                  href="tel:+12025550199"
                   className="inline-flex items-center gap-2 rounded-full border border-accent2/50 px-5 py-2 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
                 >
-                  Call (202) 555-0123
+                  Call (202) 555-0199
                 </a>
               </div>
             </div>
@@ -225,10 +225,10 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                 Fast facts
               </p>
               <ul className="space-y-2 text-sm text-textPrimary/90">
-                <li>37 client awards in Q4 FY25</li>
-                <li>20+ U.S.-based capture, proposal, and automation specialists</li>
-                <li>Over $1.3B in lifetime awards</li>
-                <li>5 client slots available per quarter</li>
+                <li>Automation Lab deployed for TNA in eight weeks.</li>
+                <li>Opportunity Scanner monitors 60+ federal and SLED sources.</li>
+                <li>Inbox → CRM Bridge captures 95% of BD threads within 24 hours.</li>
+                <li>US-based engineers maintain and govern every automation.</li>
               </ul>
             </div>
           </div>
@@ -253,7 +253,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               </span>
               <div>
                 <p className="text-sm font-semibold text-textPrimary">
-                  Top Notch Acquisition
+                  AI Automate Solutions
                 </p>
                 <p className="text-xs text-textMuted">
                   We never sell or share your information.
@@ -261,7 +261,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-3 text-xs text-textMuted">
-              <span>(c) {new Date().getFullYear()} Top Notch Acquisitions.</span>
+              <span>(c) {new Date().getFullYear()} AI Automate Solutions.</span>
               <span className="hidden h-1 w-1 rounded-full bg-textMuted/40 sm:inline-block"></span>
               <a href="#privacy" className="transition hover:text-accent2">
                 Privacy

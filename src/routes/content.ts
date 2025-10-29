@@ -1,79 +1,77 @@
 export const HERO_POINTS = [
-  "37 client awards in Q4 2025",
-  "20+ U.S.-based capture specialists, proposal writers, and emerging tech engineers",
-  "Over $1.3B in lifetime awards",
-  "5 client slots available per quarter",
+  "Opportunity Scanner delivers curated federal and SLED briefs to your workspace before 9 a.m.",
+  "Inbox → CRM Bridge turns CO and partner email threads into structured tasks, contacts, and next steps automatically.",
+  "Proposal Bot drafts compliance matrices, outlines, and color-review packets in minutes, cutting prep time by ~70%.",
+  "U.S.-based automation engineers deploy, secure, and maintain every workflow with clear guardrails.",
 ];
 
 export const WHO_WE_HELP = [
-  "Small and emerging mid-market contractors—primes and subs—in technology, engineering, professional services, construction, logistics, manufacturing, and related industries.",
-  "Set-asides welcome: 8(a), SDVOSB, WOSB, HUBZone, and more.",
+  "GovCon capture and proposal teams ready to scale output without expanding headcount.",
+  "Founder-led firms building internal automation programs that need proven process design and ongoing support.",
 ];
 
-export const WHY_TOP_NOTCH_WINS = [
-  "Decades of strategy, standardized. Playbooks built by top-tier small-business GovCon leaders. Optimized processes and templates produce high output from day one.",
-  "A 20-person execution machine. Specialists across capture, proposals, systems, and AI working in tight, repeatable workflows.",
-  "Compounding wins via partnerships. A deep network lets us connect strengths across firms to build stronger teams and bids.",
-  "Leading-edge IT/AI. Automation strips friction, speeds compliance, and raises submission volume.",
-  "Measured weekly. Meetings, submissions, relationships, and speed-to-award—tracked, reported, improved.",
+export const WHY_AIAS_WINS = [
+  "GovCon-native automations that understand BD cadence, compliance, and color reviews.",
+  "Reusable workflows that plug into Microsoft 365, Google Workspace, Salesforce, HubSpot, Airtable, SharePoint, and more.",
+  "Activation teams that combine process design, prompt engineering, and change management so teams adopt quickly.",
+  "Telemetry and reporting that keep sponsors informed on utilization, sentiment, and ROI in real time.",
 ];
 
 export const CAPTURE_ENGINE_COMPONENTS = [
   {
-    title: "Contract Opportunity Tracking",
+    title: "Opportunity Intelligence Fabric",
     description:
-      "We monitor, qualify, and prioritize targets across your vehicles and focus agencies. Every target has an owner, next step, and date.",
+      "Monitors the sources your team trusts, scores fit, and posts structured briefs directly to the tools you already use.",
   },
   {
-    title: "Lead Generation Cadences",
+    title: "Revenue Operations Automations",
     description:
-      "Research → call → targeted voicemail → email → repeat. Cadences target contracting officers, program offices, and past awardees to secure capability briefings.",
+      "Transforms inbound signals into CRM-ready deals, tasks, contacts, and reminders so nothing stalls in inboxes.",
   },
   {
-    title: "Lead Development",
+    title: "Proposal Acceleration Workspace",
     description:
-      "Every 4–6 weeks we refresh high and moderate leads with deeper research, call plans, and new message angles. Every touch is logged with clear next steps.",
+      "Generates compliance matrices, outlines, pricing shells, and reusable section language that align with Shipley-style reviews.",
   },
   {
-    title: "Proposal Submission (Shipley-inspired)",
+    title: "Data Hygiene + Reporting Layer",
     description:
-      "Compliance matrices, color reviews, quality checks, and complete proposal drafting. You provide pricing inputs, resumes, and feedback—we handle the rest.",
+      "Keeps artifacts, approvals, and cadence activity organized with dashboards sponsors can trust.",
   },
   {
-    title: "TNA Portal (Organization & Reporting)",
+    title: "Support & Iteration",
     description:
-      "A centralized hub for artifacts, pipeline hygiene, cadence logs, and weekly reports. One place to see progress and decisions.",
+      "A US-based engineering pod maintains the automations, tunes prompts, and adds new rules as BD priorities shift.",
   },
 ];
 
 export const CAPTURE_ENGINE_KPIS = [
-  "Average time to first award: ~5 months",
-  "Average award cycle: ~6 months",
-  "Proposals per month: ~4 RFPs and ~8 RFIs",
-  "Capability meetings set: ~3 per month",
-  "New relationships created: ~15 per month",
+  "First automation live in 2–3 weeks.",
+  "Full stack deployed within 8–12 weeks with structured hand-off.",
+  "Average 70% faster proposal first drafts for supported teams.",
+  "Inbox-to-CRM automations capture 95% of critical BD email threads.",
 ];
 
 export const CAPTURE_ENGINE_90_DAY_PLAN = [
   {
-    phase: "Days 1–14",
+    phase: "Weeks 1–2",
     items: [
-      "Target list lock, message kits, cadence setup",
-      "Portal setup, artifact templates, review calendar",
+      "Discovery sessions with capture, proposal, and operations stakeholders.",
+      "Source mapping, security scope, and automation success metrics defined.",
     ],
   },
   {
-    phase: "Days 15–45",
+    phase: "Weeks 3–6",
     items: [
-      "Capability briefings scheduled",
-      "First proposal submissions, teaming outreach in motion",
+      "Prototype Opportunity Scanner and Inbox → CRM Bridge on priority accounts.",
+      "Design proposal workspace templates and guardrails with your reviewers.",
     ],
   },
   {
-    phase: "Days 46–90",
+    phase: "Weeks 7–12",
     items: [
-      "Full cadence running, recurring color reviews",
-      "Submissions steady; evaluation feedback improving",
+      "Roll automations to production teams, activate telemetry, and train users.",
+      "Iterate on prompts, thresholds, and dashboards; finalize documentation and support plan.",
     ],
   },
 ];
@@ -82,62 +80,61 @@ export const AUTOMATION_LAB_MODULES = [
   {
     title: "Opportunity Scanner",
     description:
-      "Monitors the specific sites and portals your team uses and compiles one-page briefs with a compliance matrix. Runs daily or bi-weekly.",
+      "Monitors specified sources (SAM, eBuy, GovWin, state procurement, partner portals) and posts ranked briefs with compliance matrices.",
     outcome:
-      "More “ready-to-pursue” items and fewer last-minute scrambles.",
+      "BD teams review ready-to-pursue opportunities without spending hours on research.",
   },
   {
     title: "Inbox → CRM Bridge",
     description:
-      "Converts key emails into structured intel, tasks, contacts, and deals in your CRM.",
+      "Parses CO, partner, and teaming emails; creates or updates deals, tasks, and contacts in your CRM with full context.",
     outcome:
-      "Lost-in-inbox opportunities drop to near zero and follow-through improves.",
+      "No more pipeline leaks or forgotten follow-ups - every signal is captured in your systems of record.",
   },
   {
     title: "Proposal Bot",
     description:
-      "Generates proposal artifacts and a first draft for human review, cutting drafting time dramatically.",
+      "Generates compliance matrices, outline drafts, pricing shells, and kickoff packets that align to your review methodology.",
     outcome:
-      "Faster color reviews and consistent structure across bids.",
+      "Color reviews start with consistent baselines, reducing drafting time by ~70%.",
   },
   {
     title: "Custom Workflows",
     description:
-      "Automations tailored to your approvals, handoffs, repositories, and reporting.",
+      "Automates approvals, notifications, artifact storage, and reporting for the way your organization already works.",
     outcome:
-      "Fewer manual steps, clearer ownership, predictable cycle time.",
+      "Teams stay in flow while sponsors get telemetry on adoption, throughput, and ROI.",
   },
 ];
 
 export const AUTOMATION_TIMELINE = [
   {
-    phase: "Week 1–2 | Assess",
+    phase: "Weeks 1–2 | Discover",
     detail:
-      "Process mapping, tool inventory, security scope, KPI targets.",
+      "Stakeholder interviews, systems inventory, security review, and success metrics defined.",
   },
   {
-    phase: "Week 2–8 | Prototype",
+    phase: "Weeks 3–6 | Prototype",
     detail:
-      "Stand up Opportunity Scanner and Inbox → CRM on a pilot team. Draft Proposal Bot templates.",
+      "Deploy Opportunity Scanner and Inbox → CRM Bridge on a pilot segment; gather feedback and iterate.",
   },
   {
-    phase: "Week 8–10 | Deploy",
+    phase: "Weeks 6–10 | Launch",
     detail:
-      "Roll to priority users, connect repositories, train the team, tune rules.",
+      "Roll automations to production teams, configure dashboards, train users, and document support playbooks.",
   },
   {
-    phase: "Week 10–12 | Optimize",
+    phase: "Weeks 10–12 | Optimize",
     detail:
-      "Tighten prompts, thresholds, and reports. Lock SLAs and owners.",
+      "Tune prompts, add rules, activate telemetry alerts, and transition to managed support cadence.",
   },
 ];
 
 export const AUTOMATION_KPIS = [
-  "First-draft proposal time ↓ ~70%",
-  "Opportunities surfaced: +10–20/mo",
-  "Capability briefings set (assist): +6–12/quarter via clean handoffs",
-  "Missed follow-ups: near zero (email-to-CRM rules)",
-  "Cycle time to submission trending down within 60–90 days",
+  "70% faster proposal preparation for supported pursuits.",
+  "10–20 additional qualified opportunities surfaced per month by Opportunity Scanner.",
+  "Inbox → CRM Bridge captures 95% of critical BD threads within 24 hours.",
+  "Automation adoption scores maintained above 80% by primary BD users.",
 ];
 
 export type CaseStudy = {
@@ -153,115 +150,37 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    id: "dhs",
-    title: "IT Integrator | DHS (FEMA)",
-    subtitle: "Capture Engine + Proposal Ops",
-    situation: "Situation: Ad-hoc pursuits. Slow cycles.",
-    approach:
-      "What we did: Capture cadence, Shipley color reviews, full proposal drafting.",
-    impact90:
-      "90-day impact: 10 capability meetings, 11 RFPs and 22 RFIs submitted, 44 new relationships created.",
-    impact180:
-      "6-month impact: 2 awards (first at ~5 months). Proposal cycle time ↓ ~25%.",
-    cta: "Talk Through a DHS Plan",
-  },
-  {
-    id: "dod",
-    title: "SDVOSB Manufacturer | Department of Defense",
-    subtitle: "Capture Engine",
-    situation: "Situation: No teaming engine. Inconsistent pipeline.",
-    approach:
-      "What we did: Built partner outreach, capability briefings, compliance checkpoints.",
-    impact90:
-      "90-day impact: 9 capability meetings, 9 RFPs and 18 RFIs submitted, 45 new relationships; 3 IDIQ lanes opened.",
-    impact180:
-      "6-month impact: 1 award at ~5 months; steady monthly submissions maintained.",
-    cta: "Map Your DoD Targets",
-  },
-  {
-    id: "hhs",
-    title: "8(a) Professional Services Firm | HHS + VA",
-    subtitle: "Capture Engine",
-    situation: "Situation: Missed deadlines. Non-compliant drafts.",
-    approach:
-      "What we did: Standardized Shipley reviews, portal hygiene, lead-development sprints.",
-    impact90:
-      "90-day impact: 9 capability meetings, 8 RFPs and 16 RFIs submitted, 42 new relationships; 2 new teaming positions.",
-    impact180:
-      "6-month impact: Shortlist rate ↑ ~22%; 1 award at ~5 months.",
-    cta: "See Our Health-Civ Playbook",
-  },
-  {
-    id: "gsa",
-    title: "Cloud Services Small Business | GSA + DOJ",
-    subtitle: "Automation Lab",
+    id: "tna",
+    title: "Top Notch Acquisition (TNA)",
+    subtitle: "AIAS Automation Lab Deployment",
     situation:
-      "Situation: Opportunities lost in inboxes. Drafting took too long.",
+      "TNA needed to scale federal pursuits without expanding headcount or overwhelming their proposal team.",
     approach:
-      "What we did: Deployed Opportunity Scanner, Inbox → CRM Bridge, Proposal Bot.",
+      "AIAS deployed Opportunity Scanner, Inbox → CRM Bridge, and Proposal Bot in 8 weeks. Automations integrated with Microsoft 365, SharePoint, and HubSpot.",
     impact90:
-      "90-day impact: 8 RFPs and 16 RFIs submitted; ~70% faster first drafts; missed opportunities near zero.",
+      "90 days: 8 RFPs + 16 RFIs submitted, inbox zero for BD threads, proposal prep time reduced by ~65%.",
     impact180:
-      "6-month impact: 1 award at ~5–6 months; higher submission volume without new hires.",
-    cta: "Get an Automation Walkthrough",
+      "6 months: 1 award, stable cadence of 4+ RFPs / 8+ RFIs per month, leadership dashboard covering pipeline health and automation utilization.",
+    cta: "See how the automations work",
   },
-  {
-    id: "dot",
-    title: "Engineering Contractor | DOT (FHWA)",
-    subtitle: "Automation Lab + Capture Cadences",
-    situation: "Situation: Fragmented notes. Weak follow-ups.",
-    approach:
-      "What we did: Auto-log email to CRM, task rules, cadence dashboards; capture cadence on priority targets.",
-    impact90:
-      "90-day impact: 10 capability meetings, 10 RFPs and 20 RFIs submitted, 48 new relationships; 3 shortlistings.",
-    impact180:
-      "6-month impact: 1 award at ~5 months; visibility and compliance up across the pipeline.",
-    cta: "Plan Your DOT Pursuits",
-  },
+];
+
+export const RESULTS_METRICS = [
+  "70% faster proposal first drafts and kickoff packets.",
+  "40% reduction in manual data entry across BD and capture workflows.",
+  "Daily briefings of ready-to-pursue opportunities across federal and SLED sources.",
+  "Automations monitored and tuned by AIAS engineers with clear governance.",
 ];
 
 export const AGENCY_LIST = {
   federal: [
-    "Department of Defense",
-    "Department of the Army",
-    "Department of the Navy",
-    "Department of the Air Force",
-    "United States Marine Corps",
-    "Defense Health Agency",
-    "Defense Logistics Agency",
-    "Defense Information Systems Agency",
-    "United States Special Operations Command",
     "Department of Homeland Security",
-    "U.S. Customs and Border Protection",
-    "U.S. Immigration and Customs Enforcement",
-    "Transportation Security Administration",
-    "U.S. Citizenship and Immigration Services",
-    "Federal Emergency Management Agency",
-    "Cybersecurity and Infrastructure Security Agency",
+    "Department of Defense",
     "Department of Veterans Affairs",
-    "Department of Health and Human Services",
-    "National Institutes of Health",
-    "Centers for Disease Control and Prevention",
-    "Centers for Medicare & Medicaid Services",
     "General Services Administration",
-    "Department of Transportation",
-    "Federal Aviation Administration",
-    "Federal Highway Administration",
-    "Department of Justice",
-    "Federal Bureau of Investigation",
-    "U.S. Marshals Service",
-    "Federal Bureau of Prisons",
+    "Department of Health and Human Services",
     "Department of the Treasury",
-    "Internal Revenue Service",
-    "Department of the Interior",
-    "U.S. Geological Survey",
-    "National Park Service",
-    "Bureau of Land Management",
-    "Department of Energy",
-    "U.S. Department of Agriculture",
-    "U.S. Forest Service",
-    "Department of Commerce",
-    "National Oceanic and Atmospheric Administration",
+    "Department of Transportation",
   ],
   stateLocal: [
     "California Department of General Services",
@@ -269,44 +188,50 @@ export const AGENCY_LIST = {
     "Florida Department of Management Services",
     "Maryland Department of Information Technology",
     "Virginia Information Technologies Agency",
-    "Pennsylvania Department of General Services",
-    "New York State Office of General Services",
-    "New Jersey Department of the Treasury",
-    "Washington Department of Enterprise Services",
-    "Illinois Department of Central Management Services",
     "City of New York",
     "City of Los Angeles",
-    "City of Chicago",
-    "City of Houston",
-    "City of Phoenix",
-    "City of Philadelphia",
   ],
 };
 
+export const MEASUREMENT_DEFINITIONS = [
+  "Opportunity surfaced: a scored brief with compliance matrix delivered to stakeholders before the review window closes.",
+  "Inbox automation: email thread captured with owner, due date, and next action in your CRM or task system.",
+  "Proposal acceleration: draft package (outline, compliance matrix, kickoff packet) generated and approved for color review.",
+  "Adoption score: combined telemetry of usage, satisfaction, and completion rates across automations.",
+];
+
 export const CORE_FAQ = [
   {
-    question: "Do you write proposals end-to-end?",
+    question: "What systems do you integrate with?",
     answer:
-      "Yes. We handle complete drafting, compliance, and reviews. You provide pricing, resumes, and feedback. Unlimited proposals under the engagement.",
+      "We support Microsoft 365, Google Workspace, Salesforce, HubSpot, Airtable, Monday, SharePoint, Teams, Slack, and custom data stores.",
   },
   {
-    question: "How fast to first meetings and awards?",
+    question: "How long does it take to deploy?",
     answer:
-      "Cadences start quickly. Typical first meetings within 2–3 weeks. Typical first award around ~5 months; average award cycle ~6 months.",
+      "Initial automations go live in 2–3 weeks. Full Automation Lab deployments wrap within 8–12 weeks, including training and documentation.",
   },
   {
-    question: "Do you only work with 8(a)?",
+    question: "Who maintains the automations?",
     answer:
-      "No. We support all small and emerging mid-market contractors across federal and SLED markets.",
+      "AIAS maintains the stack during rollout and manages updates under an ongoing support cadence. We can transition ownership to your admins when you're ready.",
   },
   {
-    question: "What’s included in Automation Lab?",
+    question: "How do you handle security and data boundaries?",
     answer:
-      "Our emerging-tech engineers analyze your process and build automations—Opportunity Scanner, Inbox → CRM Bridge, Proposal Bot, plus custom workflows for your systems.",
+      "All work is performed by U.S.-based engineers. We follow least-privilege access, log every automation run, and respect source system rate limits.",
   },
   {
-    question: "How do you handle data?",
+    question: "What if we already have partial automations?",
     answer:
-      "U.S.-based execution, scoped access, secure tools, and minimal data collection. We respect rate limits and protect your information.",
+      "We inventory existing scripts and bots, prove out interoperability, and either extend or replace components so your team operates from a single playbook.",
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    quote:
+      "The automation lab knocked down our admin pileup. Our BD crew now focuses on strategy and partner calls instead of data entry.",
+    attribution: "VP, Top Notch Acquisition (AIAS client)",
   },
 ];

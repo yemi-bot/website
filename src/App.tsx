@@ -16,12 +16,12 @@ type RouteConfig = {
 const ROUTES: RouteConfig[] = [
   {
     path: "/",
-    title: "Homepage",
+    title: "Home",
     render: (navigate) => <HomePage onNavigate={navigate} />,
   },
   {
     path: "/solutions/capture-engine",
-    title: "Capture Engine",
+    title: "Client Story",
     render: (navigate) => <CaptureEnginePage onNavigate={navigate} />,
   },
   {

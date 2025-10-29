@@ -54,7 +54,7 @@ const AUTOMATION_SECURITY = [
   "You control data retention, access, and offboarding.",
 ];
 
-const AUTOMATION_CASE_IDS = ["gsa", "dot"];
+const AUTOMATION_CASE_IDS = ["tna"];
 
 type AutomationLabPageProps = {
   onNavigate: NavigateFn;
@@ -76,7 +76,7 @@ function AutomationLabPage({ onNavigate }: AutomationLabPageProps) {
           Automation Lab
         </p>
         <h1 className="text-4xl font-semibold text-textPrimary md:text-5xl">
-          Automation Lab -  BD Process Automation & AI
+          AI Automate Solutions Automation Lab - BD process automation & AI
         </h1>
         <p className="max-w-4xl text-lg text-textMuted">
           Multiply BD output without new hires. Our engineers map your capture

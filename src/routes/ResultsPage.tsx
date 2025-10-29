@@ -1,40 +1,11 @@
-﻿import type { NavigateFn } from "./paths";
-import { AGENCY_LIST, CASE_STUDIES } from "./content";
-
-const RESULTS_METRICS = [
-  "37 contracts awarded in Q4 FY25",
-  "Time to first award: ~5 months",
-  "Average award cycle: ~6 months",
-  "Submissions per month: ~4 RFPs + ~8 RFIs",
-  "Capability meetings set: ~3/month",
-  "New relationships created: ~15/month",
-  "Limited seats: we onboard up to 5 clients per quarter",
-];
-
-const MEASUREMENT_DEFINITIONS = [
-  "Capability meeting: a scheduled briefing with a contracting/buyer decision unit or teaming partner.",
-  "Submission: a compliant RFP/RFI/RFQ delivered on or before deadline.",
-  "Relationship created: a new, named point of contact with next steps captured.",
-  "Time to first award: calendar time from kickoff to first signed award (varies by fit and cycle).",
-];
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Within one quarter our submissions were on time, compliant, and we had real buyer meetings on the calendar.",
-    attribution: "VP, IT Integrator (DHS)",
-  },
-  {
-    quote:
-      "The cadence and partner outreach opened lanes we couldn't touch alone.",
-    attribution: "CEO, SDVOSB Manufacturer (DoD)",
-  },
-  {
-    quote:
-      "The automation cut our first-draft time drastically and nothing falls through the cracks now.",
-    attribution: "COO, Cloud Services SB (GSA/DOJ)",
-  },
-];
+import type { NavigateFn } from "./paths";
+import {
+  AGENCY_LIST,
+  CASE_STUDIES,
+  MEASUREMENT_DEFINITIONS,
+  RESULTS_METRICS,
+  TESTIMONIALS,
+} from "./content";
 
 type ResultsPageProps = {
   onNavigate: NavigateFn;
@@ -53,12 +24,11 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
           Results
         </p>
         <h1 className="text-4xl font-semibold text-textPrimary md:text-5xl">
-          Proof you can win more, faster
+          Automation metrics that stand up to executive review
         </h1>
         <p className="max-w-4xl text-lg text-textMuted">
-          Below are typical outcomes once Capture Engine and Automation Lab are
-          in place. Every metric is tracked weekly so you always know where you
-          stand.
+          Every Automation Lab deployment is instrumented. Sponsors see how quickly automations go live, how teams adopt
+          them, and how much time returns to capture and proposal priorities.
         </p>
         <div className="grid gap-4 text-sm text-textPrimary/90 md:grid-cols-2">
           {RESULTS_METRICS.map((metric) => (
@@ -76,14 +46,14 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
             onClick={scrollToContact}
             className="rounded-full bg-gradient-to-r from-accent2 to-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
           >
-            Schedule My 30-Minute Strategy Session
+            Book an Automation Assessment
           </button>
           <button
             type="button"
             onClick={() => onNavigate("/")}
             className="rounded-full border border-accent2/50 px-6 py-3 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
           >
-            Return to Homepage
+            Return home
           </button>
         </div>
       </section>
@@ -91,10 +61,10 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
       <section className="space-y-8">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
-            Case snapshots
+            Client spotlight
           </p>
           <h2 className="text-3xl font-semibold text-textPrimary">
-            Modeled outcomes across missions
+            Top Notch Acquisition's Automation Lab metrics
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
@@ -142,16 +112,16 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
       <section className="space-y-8">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
-            Agencies
+            Agencies & sources
           </p>
           <h2 className="text-3xl font-semibold text-textPrimary">
-            Where clients have won or competed
+            Where our automations monitor and report
           </h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-3xl border border-fieldStroke/40 bg-surface/80 p-6">
             <h3 className="text-lg font-semibold text-textPrimary">Federal</h3>
-            <ul className="mt-4 grid max-h-[380px] gap-2 overflow-y-auto pr-3 text-sm text-textMuted">
+            <ul className="mt-4 grid max-h-[320px] gap-2 overflow-y-auto pr-3 text-sm text-textMuted">
               {AGENCY_LIST.federal.map((agency) => (
                 <li key={agency} className="border-b border-fieldStroke/30 pb-2">
                   {agency}
@@ -161,7 +131,7 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
           </div>
           <div className="rounded-3xl border border-fieldStroke/40 bg-surface/80 p-6">
             <h3 className="text-lg font-semibold text-textPrimary">
-              State & Local
+              State & local
             </h3>
             <ul className="mt-4 grid gap-2 text-sm text-textMuted">
               {AGENCY_LIST.stateLocal.map((agency) => (
@@ -184,7 +154,7 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
       <section className="grid gap-6 rounded-3xl border border-fieldStroke/40 bg-surface/80 px-7 py-10 shadow-card md:grid-cols-[1.2fr,1fr] lg:px-12">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
-            How we measure results
+            How we measure success
           </p>
           <ul className="space-y-3 text-sm text-textPrimary/90">
             {MEASUREMENT_DEFINITIONS.map((item) => (
@@ -197,27 +167,24 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
         </div>
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
-            Guarantee & capacity
+            Engagement cadence
           </p>
           <p className="text-sm text-textMuted">
-            Service guarantee: 10-month guarantee; details provided during your
-            strategy session. Capacity: up to 5 new clients per quarter to protect
-            delivery quality.
+            Weekly telemetry reviews, monthly program retros, and quarterly roadmap resets keep stakeholders aligned on
+            value delivered and new automation requests.
           </p>
           <button
             type="button"
             onClick={scrollToContact}
             className="rounded-full bg-gradient-to-r from-accent2 to-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
           >
-            Book My Strategy Session
+            Book your assessment
           </button>
         </div>
       </section>
 
       <section className="space-y-6">
-        <h2 className="text-3xl font-semibold text-textPrimary">
-          Testimonials
-        </h2>
+        <h2 className="text-3xl font-semibold text-textPrimary">Testimonials</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((item) => (
             <blockquote
@@ -237,14 +204,14 @@ function ResultsPage({ onNavigate }: ResultsPageProps) {
             onClick={scrollToContact}
             className="rounded-full bg-gradient-to-r from-accent2 to-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
           >
-            Schedule My 30-Minute Strategy Session
+            Talk with AIAS
           </button>
           <button
             type="button"
-            onClick={() => onNavigate("/solutions/capture-engine")}
+            onClick={() => onNavigate("/solutions/automation-lab")}
             className="rounded-full border border-accent2/50 px-6 py-3 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
           >
-            Explore Capture Engine
+            Explore Automation Lab
           </button>
         </div>
       </section>
