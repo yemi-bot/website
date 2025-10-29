@@ -85,6 +85,10 @@ function App() {
   const [currentPath, setCurrentPath] = useState<RoutePath>(initialPath);
 
   useEffect(() => {
+    document.title = "AI Automate Solutions - Automation Lab";
+  }, []);
+
+  useEffect(() => {
     const handlePopState = () => {
       const nextPath = sanitizePath(window.location.pathname);
       if (nextPath) {
