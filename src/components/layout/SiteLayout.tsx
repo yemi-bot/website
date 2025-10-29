@@ -1,4 +1,5 @@
-﻿import { ReactNode, useCallback, useMemo, useState } from "react";
+import { ReactNode, useCallback, useMemo, useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import type { NavigateFn, RoutePath, RouteSummary } from "../../routes/paths";
 
 type SiteLayoutProps = {
@@ -19,14 +20,28 @@ function getNavLabel(title: string, path: RoutePath) {
 
 function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   const navItems = useMemo(
     () =>
-      routes.map((route) => ({
-        path: route.path,
-        label: getNavLabel(route.title, route.path),
-      })),
-    [routes],
+      routes
+        .filter((route) => {
+          if (route.includeInNav === false) {
+            return false;
+          }
+          if (route.path === "/proposal-bot") {
+            return isAuthenticated;
+          }
+          if (route.path === "/login") {
+            return !isAuthenticated;
+          }
+          return true;
+        })
+        .map((route) => ({
+          path: route.path,
+          label: getNavLabel(route.title, route.path),
+        })),
+    [routes, isAuthenticated],
   );
 
   const handleNavigate = useCallback(
@@ -50,6 +65,11 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [currentPath, onNavigate]);
+
+  const handleLogout = useCallback(() => {
+    logout();
+    handleNavigate("/login");
+  }, [logout, handleNavigate]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-textPrimary">
@@ -95,9 +115,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                   type="button"
                   onClick={() => handleNavigate(item.path)}
                   className={`relative transition ${
-                    isActive
-                      ? "text-textPrimary"
-                      : "text-textMuted hover:text-accent2"
+                    isActive ? "text-textPrimary" : "text-textMuted hover:text-accent2"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -118,6 +136,23 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
             >
               Book Assessment
             </button>
+            {isAuthenticated ? (
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="hidden rounded-full border border-accent2/50 px-4 py-2 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white lg:inline-flex"
+              >
+                Sign Out
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleNavigate("/login")}
+                className="hidden rounded-full border border-accent2/50 px-4 py-2 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white lg:inline-flex"
+              >
+                Sign In
+              </button>
+            )}
             <button
               type="button"
               onClick={() => setIsMenuOpen((previous) => !previous)}
@@ -131,12 +166,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
                 fill="none"
                 className="h-5 w-5"
               >
-                <path
-                  d="M5 7h14M5 12h14M5 17h14"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
+                <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -171,6 +201,23 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               >
                 Book Assessment
               </button>
+              {isAuthenticated ? (
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="rounded-2xl border border-accent2/30 bg-accentSoft px-4 py-3 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleNavigate("/login")}
+                  className="rounded-2xl border border-accent2/30 bg-accentSoft px-4 py-3 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
+                >
+                  Sign In
+                </button>
+              )}
             </nav>
           </div>
         ) : null}
@@ -227,7 +274,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               <ul className="space-y-2 text-sm text-textPrimary/90">
                 <li>Automation Lab deployed for TNA in eight weeks.</li>
                 <li>Opportunity Scanner monitors 60+ federal and SLED sources.</li>
-                <li>Inbox → CRM Bridge captures 95% of BD threads within 24 hours.</li>
+                <li>Inbox &rarr; CRM Bridge captures 95% of BD threads within 24 hours.</li>
                 <li>US-based engineers maintain and govern every automation.</li>
               </ul>
             </div>

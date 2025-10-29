@@ -1,9 +1,12 @@
 ﻿import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import SiteLayout from "./components/layout/SiteLayout";
+import { AuthProvider } from "./context/AuthContext";
 import HomePage from "./routes/HomePage";
 import CaptureEnginePage from "./routes/CaptureEnginePage";
 import AutomationLabPage from "./routes/AutomationLabPage";
 import ResultsPage from "./routes/ResultsPage";
+import LoginPage from "./routes/LoginPage";
+import DashboardPage from "./routes/DashboardPage";
 import NotFoundPage from "./routes/NotFoundPage";
 import type { NavigateFn, RoutePath, RouteSummary } from "./routes/paths";
 
@@ -11,6 +14,7 @@ type RouteConfig = {
   path: RoutePath;
   title: string;
   render: (navigate: NavigateFn) => ReactNode;
+  includeInNav?: boolean;
 };
 
 const ROUTES: RouteConfig[] = [
@@ -33,6 +37,17 @@ const ROUTES: RouteConfig[] = [
     path: "/results",
     title: "Results",
     render: (navigate) => <ResultsPage onNavigate={navigate} />,
+  },
+  {
+    path: "/proposal-bot",
+    title: "Dashboard",
+    render: (navigate) => <DashboardPage onNavigate={navigate} />,
+  },
+  {
+    path: "/login",
+    title: "Login",
+    render: (navigate) => <LoginPage onNavigate={navigate} />,
+    includeInNav: false,
   },
 ];
 
@@ -98,14 +113,26 @@ function App() {
 
   const route = ROUTE_MAP[currentPath];
 
+  const routeSummaries: RouteSummary[] = useMemo(
+    () =>
+      ROUTES.map(({ path, title, includeInNav }) => ({
+        path,
+        title,
+        includeInNav,
+      })),
+    [],
+  );
+
   return (
-    <SiteLayout
-      currentPath={currentPath}
-      onNavigate={navigate}
-      routes={ROUTES as RouteSummary[]}
-    >
-      {route ? route.render(navigate) : <NotFoundPage onNavigate={navigate} />}
-    </SiteLayout>
+    <AuthProvider>
+      <SiteLayout
+        currentPath={currentPath}
+        onNavigate={navigate}
+        routes={routeSummaries}
+      >
+        {route ? route.render(navigate) : <NotFoundPage onNavigate={navigate} />}
+      </SiteLayout>
+    </AuthProvider>
   );
 }
 

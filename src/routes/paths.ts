@@ -2,11 +2,14 @@ export type RoutePath =
   | "/"
   | "/solutions/capture-engine"
   | "/solutions/automation-lab"
-  | "/results";
+  | "/results"
+  | "/proposal-bot"
+  | "/login";
 
 export type NavigateFn = (path: RoutePath) => void;
 
 export type RouteSummary = {
   path: RoutePath;
   title: string;
+  includeInNav?: boolean;
 };
