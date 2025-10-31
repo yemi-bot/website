@@ -98,10 +98,14 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
       >,
     ) => {
-      const { name, value, type, checked } = event.target;
+      const target = event.target;
+      const { name, value } = target;
+      const isCheckbox =
+        target instanceof HTMLInputElement && target.type === "checkbox";
+      const nextValue = isCheckbox ? target.checked : value;
       setFormData((previous) => ({
         ...previous,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: nextValue,
       }));
     },
     [],
