@@ -23,6 +23,7 @@ function HomePage({ onNavigate }: HomePageProps) {
     const element = document.getElementById("contact");
     element?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  const marqueeClients = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-16 lg:gap-20 lg:px-10 lg:py-20">
@@ -122,16 +123,22 @@ function HomePage({ onNavigate }: HomePageProps) {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
           Trusted by capture and delivery teams
         </p>
-        <div className="grid gap-4 rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 p-6 md:grid-cols-3">
-          {CLIENT_LOGOS.map((client) => (
-            <div
-              key={client}
-              className="flex h-16 items-center justify-center rounded-2xl border border-fieldStroke/30 bg-surface px-4 text-sm font-semibold uppercase tracking-[0.2em] text-textPrimary/70"
-            >
-              {client}
-            </div>
-          ))}
+        <div className="relative overflow-hidden rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 py-6">
+          <div className="flex animate-marquee gap-4 whitespace-nowrap">
+            {marqueeClients.map((client, index) => (
+              <div
+                key={`${client}-${index}`}
+                className="inline-flex h-16 min-w-[16rem] items-center justify-center rounded-2xl border border-fieldStroke/30 bg-surface px-6 text-sm font-semibold uppercase tracking-[0.18em] text-textPrimary/70"
+                aria-hidden={index >= CLIENT_LOGOS.length ? "true" : undefined}
+              >
+                {client}
+              </div>
+            ))}
+          </div>
         </div>
+        <p className="text-sm text-textMuted">
+          Many of these teams run Opportunity Scanner and Proposal Bot deployments delivered through our TNA partnership.
+        </p>
       </section>
 
       <section className="space-y-10">
