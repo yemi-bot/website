@@ -234,4 +234,126 @@ export const TESTIMONIALS = [
       "The automation lab knocked down our admin pileup. Our BD crew now focuses on strategy and partner calls instead of data entry.",
     attribution: "VP, Top Notch Acquisition (AIAS client)",
   },
+  {
+    quote:
+      "AIAS helped us turn a backlog of intel into an actual pipeline. The team ships quickly and documents every automation so adoption stays high.",
+    attribution: "Director of Growth, Mid-Atlantic Integrator",
+  },
+  {
+    quote:
+      "Within 60 days we had dashboards, automations, and a governance cadence our executives trust. The partnership feels like an extension of our team.",
+    attribution: "Chief Operating Officer, GovTech Prime",
+  },
+];
+
+export const CLIENT_LOGOS = [
+  "Top Notch Acquisition",
+  "GovTech Prime",
+  "Mid-Atlantic Integrator",
+  "Falcon Systems",
+  "Blue Ridge Analytics",
+  "Atlas Federal Partners",
+];
+
+export const PRICING_PLANS = [
+  {
+    name: "Core Automation Retainer",
+    price: "$18,000",
+    period: "per month",
+    description:
+      "Best for founder-led firms adding a structured automation layer without expanding headcount.",
+    highlights: [
+      "Dedicated automation engineer + engagement lead",
+      "Opportunity Scanner, Inbox ➜ CRM Bridge, Proposal Bot",
+      "Telemetry dashboard and monthly optimization sprints",
+      "Security review, documentation, and change log tracking",
+    ],
+    cta: "Book a scope review",
+  },
+  {
+    name: "Growth Program",
+    price: "$25,000",
+    period: "per month",
+    description:
+      "Ideal for BD teams supporting multiple vehicles and directors who need enterprise-grade governance.",
+    highlights: [
+      "Everything in Core, plus capture & proposal pods",
+      "Weekly executive reviews + roadmap planning",
+      "Integrated knowledge base and training enablement",
+      "Access to partner ecosystem and vetted delivery talent",
+    ],
+    popular: true,
+    cta: "Request proposal",
+  },
+  {
+    name: "Enterprise Co-Delivery",
+    price: "Custom",
+    period: "",
+    description:
+      "Designed for primes with multi-agency portfolios, complex security requirements, and internal PMO collaboration.",
+    highlights: [
+      "Shared delivery team with 24/7 telemetry alerts",
+      "FedRAMP / IL environment consulting & segmentation",
+      "Change management office + AI policy advisory",
+      "Quarterly value realization workshops with leadership",
+    ],
+    cta: "Schedule architecture workshop",
+  },
+];
+
+export const RESOURCE_GUIDES = [
+  {
+    title: "Automation Lab Playbook",
+    description:
+      "A 40-page guide covering discovery questions, build standards, and sample telemetry dashboards for capture teams.",
+    status: "Download available",
+  },
+  {
+    title: "GovCon Opportunity Scanner Checklist",
+    description:
+      "Step-by-step checklist to align sources, access, and scoring before activating Opportunity Scanner in production.",
+    status: "Coming soon (March release)",
+  },
+  {
+    title: "Proposal Bot Prompt Library",
+    description:
+      "Reusable prompts and guardrails patterned after Shipley-style reviews for color teams and SMEs.",
+    status: "Available to clients",
+  },
+];
+
+export const RESOURCE_CHANNELS = [
+  {
+    name: "Insights Blog",
+    description:
+      "Articles and teardown videos on automation wins across federal, SLED, and partner ecosystems.",
+    linkLabel: "Explore articles",
+  },
+  {
+    name: "Documentation Hub",
+    description:
+      "Implementation guides, API references, and SOPs for Automation Lab modules.",
+    linkLabel: "View docs",
+  },
+  {
+    name: "Automation Sessions",
+    description:
+      "Monthly live sessions walking through new releases, compliance updates, and roadmap previews.",
+    linkLabel: "Join waitlist",
+  },
+];
+
+export const PARTNER_PROGRAM_BENEFITS = [
+  "10-week accelerator with peer pods, hot seats, and recorded workshops.",
+  "Access to AIAS delivery templates, automation artifacts, and resource library.",
+  "Introductions to vetted integrators and primes looking for automation partners.",
+  "Lifetime alumni community and quarterly mastermind with AIAS leadership.",
+];
+
+export const PARTNER_PROGRAM_CURRICULUM = [
+  "Week 1: Positioning, intake, and momentum planning.",
+  "Week 3: Building a repeatable automation discovery motion.",
+  "Week 5: Delivery tooling, QA, and compliance guardrails.",
+  "Week 7: Scaling retainers, upsells, and support cadences.",
+  "Week 9: Growth channels, partnerships, and authority building.",
 ];

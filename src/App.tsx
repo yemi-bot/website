@@ -8,6 +8,9 @@ import ResultsPage from "./routes/ResultsPage";
 import LoginPage from "./routes/LoginPage";
 import DashboardPage from "./routes/DashboardPage";
 import NotFoundPage from "./routes/NotFoundPage";
+import PricingPage from "./routes/PricingPage";
+import ResourcesPage from "./routes/ResourcesPage";
+import PartnerProgramPage from "./routes/PartnerProgramPage";
 import type { NavigateFn, RoutePath, RouteSummary } from "./routes/paths";
 
 type RouteConfig = {
@@ -37,6 +40,21 @@ const ROUTES: RouteConfig[] = [
     path: "/results",
     title: "Results",
     render: (navigate) => <ResultsPage onNavigate={navigate} />,
+  },
+  {
+    path: "/pricing",
+    title: "Pricing",
+    render: (navigate) => <PricingPage onNavigate={navigate} />,
+  },
+  {
+    path: "/resources",
+    title: "Resources",
+    render: (navigate) => <ResourcesPage onNavigate={navigate} />,
+  },
+  {
+    path: "/partner-program",
+    title: "Partner Program",
+    render: (navigate) => <PartnerProgramPage onNavigate={navigate} />,
   },
   {
     path: "/proposal-bot",

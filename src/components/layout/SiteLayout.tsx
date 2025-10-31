@@ -1,4 +1,11 @@
-import { ReactNode, useCallback, useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { useAuth } from "../../context/AuthContext";
 import type { NavigateFn, RoutePath, RouteSummary } from "../../routes/paths";
 
@@ -21,6 +28,20 @@ function getNavLabel(title: string, path: RoutePath) {
 function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    role: "",
+    companySize: "",
+    annualRevenue: "",
+    projectBudget: "",
+    help: "",
+    optInEmail: false,
+    optInSms: false,
+  });
 
   const navItems = useMemo(
     () =>
@@ -70,6 +91,46 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
     logout();
     handleNavigate("/login");
   }, [logout, handleNavigate]);
+
+  const handleFormChange = useCallback(
+    (
+      event: ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) => {
+      const { name, value, type, checked } = event.target;
+      setFormData((previous) => ({
+        ...previous,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    },
+    [],
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      // Placeholder: integrate with CRM or email automation provider.
+      // eslint-disable-next-line no-console
+      console.table(formData);
+      setIsSubmitted(true);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        role: "",
+        companySize: "",
+        annualRevenue: "",
+        projectBudget: "",
+        help: "",
+        optInEmail: false,
+        optInSms: false,
+      });
+      window.setTimeout(() => setIsSubmitted(false), 6000);
+    },
+    [formData],
+  );
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-textPrimary">
@@ -227,7 +288,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
 
       <footer className="border-t border-fieldStroke/40 bg-surfaceSoft/60 py-12 text-sm text-textMuted">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 lg:px-10">
-          <div id="contact" className="grid gap-6 rounded-3xl border border-accent2/20 bg-surface px-6 py-6 shadow-lg shadow-slate-200/40 sm:px-10 sm:py-10 lg:grid-cols-[2fr,1fr]">
+          <div id="contact" className="grid gap-6 rounded-3xl border border-accent2/20 bg-surface px-6 py-6 shadow-lg shadow-slate-200/40 sm:px-10 sm:py-10 lg:grid-cols-[2fr,1.3fr]">
             <div className="space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accentWarm">
                 Let's talk
@@ -238,46 +299,186 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
               <p className="text-base text-textMuted">
                 No obligation. Zoom or phone. Your information stays private and we only onboard a limited number of new clients each quarter to protect delivery quality.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="mailto:hello@aiautomatesolution.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent2 to-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
-                >
-                  Email Us
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="h-4 w-4"
-                  >
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="tel:+12025550199"
-                  className="inline-flex items-center gap-2 rounded-full border border-accent2/50 px-5 py-2 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
-                >
-                  Call (202) 555-0199
-                </a>
-              </div>
-            </div>
-            <div className="space-y-4 rounded-2xl border border-accentWarm/35 bg-surfaceSoft/80 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accentWarm">
-                Fast facts
-              </p>
               <ul className="space-y-2 text-sm text-textPrimary/90">
-                <li>Automation Lab deployed for TNA in eight weeks.</li>
-                <li>Opportunity Scanner monitors 60+ federal and SLED sources.</li>
-                <li>Inbox &rarr; CRM Bridge captures 95% of BD threads within 24 hours.</li>
-                <li>US-based engineers maintain and govern every automation.</li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                  <span>Detailed intake ensures the first 90 days focus on the right automations.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                  <span>We align systems access, compliance requirements, and ROI targets before kickoff.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                  <span>Submissions route directly to our delivery pod for rapid follow-up.</span>
+                </li>
               </ul>
             </div>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 rounded-2xl border border-accentWarm/35 bg-surfaceSoft/80 p-5"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accentWarm">
+                Intake form
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  First Name
+                  <input
+                    required
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Last Name
+                  <input
+                    required
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Email
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Company
+                  <input
+                    required
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Role
+                  <input
+                    required
+                    type="text"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Company Size
+                  <select
+                    required
+                    name="companySize"
+                    value={formData.companySize}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  >
+                    <option value="">Select</option>
+                    <option value="1-10">1-10 employees</option>
+                    <option value="11-50">11-50 employees</option>
+                    <option value="51-200">51-200 employees</option>
+                    <option value="201-500">201-500 employees</option>
+                    <option value="500+">500+ employees</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Annual Revenue
+                  <select
+                    required
+                    name="annualRevenue"
+                    value={formData.annualRevenue}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  >
+                    <option value="">Select</option>
+                    <option value="<1M">Less than $1M</option>
+                    <option value="1-10M">$1M - $10M</option>
+                    <option value="10-25M">$10M - $25M</option>
+                    <option value="25-50M">$25M - $50M</option>
+                    <option value="50M+">$50M+</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                  Project Budget
+                  <select
+                    required
+                    name="projectBudget"
+                    value={formData.projectBudget}
+                    onChange={handleFormChange}
+                    className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                  >
+                    <option value="">Select</option>
+                    <option value="<25k">Less than $25K</option>
+                    <option value="25-50k">$25K - $50K</option>
+                    <option value="50-100k">$50K - $100K</option>
+                    <option value="100-200k">$100K - $200K</option>
+                    <option value="200k+">$200K+</option>
+                  </select>
+                </label>
+              </div>
+              <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.2em] text-textMuted">
+                How can we help?
+                <textarea
+                  required
+                  name="help"
+                  value={formData.help}
+                  onChange={handleFormChange}
+                  rows={4}
+                  className="rounded-xl border border-fieldStroke/40 bg-white px-3 py-2 text-sm text-textPrimary focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2/40"
+                ></textarea>
+              </label>
+              <div className="space-y-2 text-xs text-textMuted">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="optInEmail"
+                    checked={formData.optInEmail}
+                    onChange={handleFormChange}
+                    className="h-4 w-4 rounded border border-fieldStroke/40 text-accent2 focus:ring-accent2"
+                  />
+                  Email me playbooks & updates
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    name="optInSms"
+                    checked={formData.optInSms}
+                    onChange={handleFormChange}
+                    className="h-4 w-4 rounded border border-fieldStroke/40 text-accent2 focus:ring-accent2"
+                  />
+                  Opt into SMS reminders
+                </label>
+              </div>
+              <div className="space-y-3">
+                <button
+                  type="submit"
+                  className="w-full rounded-full bg-gradient-to-r from-accent2 to-accent px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:from-accent2 hover:to-accent2"
+                >
+                  Submit intake
+                </button>
+                <p className="text-xs text-textMuted">
+                  We respond within one business day. Submissions route securely to our delivery pod and are never shared.
+                </p>
+                {isSubmitted ? (
+                  <div className="rounded-xl border border-accent2/40 bg-accentSoft/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent2">
+                    Thanks! Your intake is on our calendar.
+                  </div>
+                ) : null}
+              </div>
+            </form>
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

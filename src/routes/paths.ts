@@ -3,6 +3,9 @@ export type RoutePath =
   | "/solutions/capture-engine"
   | "/solutions/automation-lab"
   | "/results"
+  | "/pricing"
+  | "/resources"
+  | "/partner-program"
   | "/proposal-bot"
   | "/login";
 

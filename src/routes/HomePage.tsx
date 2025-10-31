@@ -8,6 +8,10 @@ import {
   CASE_STUDIES,
   RESULTS_METRICS,
   CORE_FAQ,
+  CLIENT_LOGOS,
+  PRICING_PLANS,
+  RESOURCE_GUIDES,
+  TESTIMONIALS,
 } from "./content";
 
 type HomePageProps = {
@@ -114,6 +118,22 @@ function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      <section className="space-y-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
+          Trusted by capture and delivery teams
+        </p>
+        <div className="grid gap-4 rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 p-6 md:grid-cols-3">
+          {CLIENT_LOGOS.map((client) => (
+            <div
+              key={client}
+              className="flex h-16 items-center justify-center rounded-2xl border border-fieldStroke/30 bg-surface px-4 text-sm font-semibold uppercase tracking-[0.2em] text-textPrimary/70"
+            >
+              {client}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="space-y-10">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
@@ -173,6 +193,92 @@ function HomePage({ onNavigate }: HomePageProps) {
           >
             Talk with Engineering
           </button>
+        </div>
+      </section>
+
+      <section className="space-y-8 rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 px-7 py-10 shadow-card lg:px-12">
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
+              Engagement options
+            </p>
+            <h3 className="text-3xl font-semibold text-textPrimary">
+              Pick the tier that matches your growth plan
+            </h3>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate("/pricing")}
+            className="inline-flex items-center gap-2 rounded-full border border-accent2/50 px-5 py-2 text-sm font-semibold text-accent2 transition hover:border-accent2 hover:bg-accent2 hover:text-white"
+          >
+            View detailed pricing
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="h-4 w-4"
+            >
+              <path
+                d="M5 12h14M13 6l6 6-6 6"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {PRICING_PLANS.slice(0, 2).map((plan) => (
+            <div
+              key={plan.name}
+              className="flex h-full flex-col gap-4 rounded-3xl border border-fieldStroke/40 bg-surface/80 p-6"
+            >
+              <div className="space-y-1">
+                <h4 className="text-xl font-semibold text-textPrimary">
+                  {plan.name}
+                </h4>
+                <p className="text-sm text-textMuted">{plan.description}</p>
+              </div>
+              <p className="text-2xl font-semibold text-textPrimary">
+                {plan.price}
+                {plan.period ? (
+                  <span className="ml-2 text-sm font-normal text-textMuted">
+                    {plan.period}
+                  </span>
+                ) : null}
+              </p>
+              <ul className="space-y-2 text-sm text-textPrimary/90">
+                {plan.highlights.slice(0, 3).map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                type="button"
+                onClick={() => onNavigate("/pricing")}
+                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-accent2 transition hover:text-accent2"
+              >
+                Compare inclusions
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-4 w-4"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -264,6 +370,54 @@ function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      <section className="space-y-8 rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 px-7 py-10 shadow-card lg:px-12">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
+            Knowledge base
+          </p>
+          <h3 className="text-3xl font-semibold text-textPrimary">
+            Guides and sessions that keep teams informed
+          </h3>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {RESOURCE_GUIDES.slice(0, 3).map((guide) => (
+            <article
+              key={guide.title}
+              className="flex h-full flex-col gap-3 rounded-3xl border border-fieldStroke/40 bg-surface/80 p-6 text-sm text-textMuted"
+            >
+              <p className="text-xs uppercase tracking-[0.2em] text-accent2">
+                {guide.status}
+              </p>
+              <h4 className="text-lg font-semibold text-textPrimary">
+                {guide.title}
+              </h4>
+              <p>{guide.description}</p>
+              <button
+                type="button"
+                onClick={() => onNavigate("/resources")}
+                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-accent2 transition hover:text-accent2"
+              >
+                Visit resources
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-4 w-4"
+                >
+                  <path
+                    d="M5 12h14M13 6l6 6-6 6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="space-y-8 rounded-3xl border border-fieldStroke/40 bg-surface/80 px-7 py-10 shadow-card lg:px-12">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
@@ -284,6 +438,30 @@ function HomePage({ onNavigate }: HomePageProps) {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="space-y-6 rounded-3xl border border-fieldStroke/40 bg-surface/80 px-7 py-10 shadow-card lg:px-12">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent2">
+            Social proof
+          </p>
+          <h3 className="text-3xl font-semibold text-textPrimary">
+            Leaders trust Automation Lab to deliver outcomes
+          </h3>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial) => (
+            <blockquote
+              key={testimonial.attribution}
+              className="rounded-3xl border border-fieldStroke/40 bg-surfaceSoft/80 p-6 text-sm text-textMuted"
+            >
+              <p>"{testimonial.quote}"</p>
+              <footer className="mt-4 text-xs uppercase tracking-[0.2em] text-accent2">
+                {testimonial.attribution}
+              </footer>
+            </blockquote>
+          ))}
+        </div>
       </section>
 
       <section className="space-y-6">
