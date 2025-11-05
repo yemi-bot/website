@@ -66,6 +66,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (isAuthenticated && subscriptions.length === 0) {
+      setSubscriptions(DEFAULT_SUBSCRIPTIONS);
+    }
+  }, [isAuthenticated, subscriptions.length]);
+
+  useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
