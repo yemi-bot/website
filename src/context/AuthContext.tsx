@@ -24,7 +24,7 @@ const AUTH_STORAGE_KEY = "aias__auth";
 const SUBSCRIPTION_STORAGE_KEY = "aias__subscriptions";
 const VALID_USERNAME = "aias";
 const VALID_PASSWORD = "pass";
-const DEFAULT_SUBSCRIPTIONS: SubscriptionId[] = [
+export const DEFAULT_SUBSCRIPTIONS: SubscriptionId[] = [
   "opportunity-scanner",
   "proposal-bot",
 ];

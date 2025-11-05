@@ -6,7 +6,11 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useAuth, type SubscriptionId } from "../../context/AuthContext";
+import {
+  useAuth,
+  DEFAULT_SUBSCRIPTIONS,
+  type SubscriptionId,
+} from "../../context/AuthContext";
 import type { NavigateFn, RoutePath, RouteSummary } from "../../routes/paths";
 
 type SiteLayoutProps = {
@@ -39,6 +43,8 @@ const SUBSCRIPTION_NAV: Record<
   },
 };
 
+type NavItem = { path: RoutePath; label: string };
+
 function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, subscriptions, logout } = useAuth();
@@ -57,33 +63,36 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
     optInSms: false,
   });
 
-  const defaultNavItems = useMemo(
-    () =>
-      routes
-        .filter((route) => {
-          if (route.includeInNav === false) {
-            return false;
-          }
-          if (route.path === "/proposal-bot") {
-            return isAuthenticated;
-          }
-          if (route.path === "/login") {
-            return !isAuthenticated;
-          }
-          return true;
-        })
-        .map((route) => ({
-          path: route.path,
-          label: getNavLabel(route.title, route.path),
-        })),
-    [routes, isAuthenticated],
-  );
-
-  const authenticatedNavItems = useMemo(() => {
-    if (!isAuthenticated) {
+  const defaultNavItems = useMemo<NavItem[]>(() => {
+    if (isAuthenticated) {
       return [];
     }
-    const items = subscriptions
+    return routes
+      .filter((route) => {
+        if (route.includeInNav === false) {
+          return false;
+        }
+        if (route.path === "/proposal-bot") {
+          return false;
+        }
+        if (route.path === "/login") {
+          return true;
+        }
+        return true;
+      })
+      .map((route) => ({
+        path: route.path,
+        label: getNavLabel(route.title, route.path),
+      }));
+  }, [routes, isAuthenticated]);
+
+  const navItems = useMemo<NavItem[]>(() => {
+    if (!isAuthenticated) {
+      return defaultNavItems;
+    }
+    const baseSubscriptions: SubscriptionId[] =
+      subscriptions.length > 0 ? subscriptions : DEFAULT_SUBSCRIPTIONS;
+    const items = baseSubscriptions
       .map((subscription) => SUBSCRIPTION_NAV[subscription])
       .filter(
         (entry): entry is { path: RoutePath; label: string } => Boolean(entry),
@@ -92,13 +101,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
       items.push({ path: "/proposal-bot", label: "Operator Console" });
     }
     return items;
-  }, [isAuthenticated, subscriptions]);
-
-  const navItems = isAuthenticated
-    ? authenticatedNavItems.length > 0
-      ? authenticatedNavItems
-      : defaultNavItems
-    : defaultNavItems;
+  }, [isAuthenticated, subscriptions, defaultNavItems]);
 
   const handleNavigate = useCallback(
     (path: RoutePath) => {
