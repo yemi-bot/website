@@ -8,6 +8,8 @@ import ResultsPage from "./routes/ResultsPage";
 import LoginPage from "./routes/LoginPage";
 import DashboardPage from "./routes/DashboardPage";
 import NotFoundPage from "./routes/NotFoundPage";
+import OpportunityScannerPage from "./routes/services/OpportunityScannerPage";
+import ProposalBotPage from "./routes/services/ProposalBotPage";
 import PricingPage from "./routes/PricingPage";
 import ResourcesPage from "./routes/ResourcesPage";
 import PartnerProgramPage from "./routes/PartnerProgramPage";
@@ -55,6 +57,18 @@ const ROUTES: RouteConfig[] = [
     path: "/partner-program",
     title: "Partner Program",
     render: (navigate) => <PartnerProgramPage onNavigate={navigate} />,
+  },
+  {
+    path: "/services/opportunity-scanner",
+    title: "Opportunity Scanner",
+    render: (navigate) => <OpportunityScannerPage onNavigate={navigate} />,
+    includeInNav: false,
+  },
+  {
+    path: "/services/proposal-bot",
+    title: "Proposal Bot",
+    render: (navigate) => <ProposalBotPage onNavigate={navigate} />,
+    includeInNav: false,
   },
   {
     path: "/proposal-bot",

@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth, type SubscriptionId } from "../../context/AuthContext";
 import type { NavigateFn, RoutePath, RouteSummary } from "../../routes/paths";
 
 type SiteLayoutProps = {
@@ -25,9 +25,23 @@ function getNavLabel(title: string, path: RoutePath) {
   return title;
 }
 
+const SUBSCRIPTION_NAV: Record<
+  SubscriptionId,
+  { path: RoutePath; label: string }
+> = {
+  "opportunity-scanner": {
+    path: "/services/opportunity-scanner",
+    label: "Opportunity Scanner",
+  },
+  "proposal-bot": {
+    path: "/services/proposal-bot",
+    label: "Proposal Bot",
+  },
+};
+
 function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, subscriptions, logout } = useAuth();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -43,7 +57,7 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
     optInSms: false,
   });
 
-  const navItems = useMemo(
+  const defaultNavItems = useMemo(
     () =>
       routes
         .filter((route) => {
@@ -64,6 +78,27 @@ function SiteLayout({ currentPath, routes, onNavigate, children }: SiteLayoutPro
         })),
     [routes, isAuthenticated],
   );
+
+  const authenticatedNavItems = useMemo(() => {
+    if (!isAuthenticated) {
+      return [];
+    }
+    const items = subscriptions
+      .map((subscription) => SUBSCRIPTION_NAV[subscription])
+      .filter(
+        (entry): entry is { path: RoutePath; label: string } => Boolean(entry),
+      );
+    if (!items.some((item) => item.path === "/proposal-bot")) {
+      items.push({ path: "/proposal-bot", label: "Operator Console" });
+    }
+    return items;
+  }, [isAuthenticated, subscriptions]);
+
+  const navItems = isAuthenticated
+    ? authenticatedNavItems.length > 0
+      ? authenticatedNavItems
+      : defaultNavItems
+    : defaultNavItems;
 
   const handleNavigate = useCallback(
     (path: RoutePath) => {

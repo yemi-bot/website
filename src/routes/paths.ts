@@ -6,6 +6,8 @@ export type RoutePath =
   | "/pricing"
   | "/resources"
   | "/partner-program"
+  | "/services/opportunity-scanner"
+  | "/services/proposal-bot"
   | "/proposal-bot"
   | "/login";
 
