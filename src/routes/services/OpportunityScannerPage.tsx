@@ -17,24 +17,46 @@ export default function OpportunityScannerPage({
 }: OpportunityScannerPageProps) {
   // Clients persisted per browser
   const STORAGE_KEY = "aias__clients";
+  const normalizeClients = (list: string[]) => {
+    const map = new Map<string, string>();
+    for (const entry of list) {
+      if (!entry || typeof entry !== "string") continue;
+      const trimmed = entry.trim();
+      if (!trimmed) continue;
+      const key = trimmed.toLowerCase();
+      if (!map.has(key)) {
+        map.set(key, trimmed);
+      }
+    }
+    return Array.from(map.values()).sort((a, b) => a.localeCompare(b));
+  };
+
   const [clients, setClients] = useState<string[]>([]);
   useEffect(() => {
+    let stored: string[] | null = null;
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.every((c) => typeof c === "string")) {
-          setClients(parsed);
-          return;
+          stored = parsed;
         }
       }
-    } catch {}
-    setClients(defaultClients);
-  }, []);
-  const saveClients = (next: string[]) => {
-    setClients(next);
+    } catch {
+      stored = null;
+    }
+    const merged = normalizeClients([...(stored ?? []), ...defaultClients]);
+    setClients(merged);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    } catch {}
+  }, []);
+
+  const saveClients = (next: string[]) => {
+    const cleaned = normalizeClients(next);
+    setClients(cleaned);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
     } catch {}
   };
 
