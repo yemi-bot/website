@@ -259,6 +259,7 @@ export const CLIENT_LOGOS = [
   "Clean Solution Services",
   "Core Consulting Inc",
   "Covington Government Services",
+  "Decibel Management",
   "Digital Plaza",
   "Dreamers and Achievers Center",
   "Elite Disaster Consulting",
